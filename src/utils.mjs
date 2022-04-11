@@ -27,13 +27,13 @@ export function error(msg) {
   console.log(chalk.redBright.bold(msg));
 }
 
-export async function doesDistFolderExist() {
+export async function doesDistFolderExist(BUILD_DIR) {
   try {
     const stat = await fsPromise.stat(`./${BUILD_DIR}`);
     return stat;
   } catch (error) {
     throw new Error(
-      `Looks like the ./${BUILD_DIR} directory is not available. Try running the build command \`npm run build\` first`
+      `Looks like your build directory is not available. Try running the build command \`npm run build\` first`
     );
   }
 }

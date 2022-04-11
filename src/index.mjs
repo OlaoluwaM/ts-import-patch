@@ -35,7 +35,7 @@ async function grabAllCompiledJSFiles() {
     process.exit(1);
   }
 
-  await doesDistFolderExist();
+  await doesDistFolderExist(BUILD_DIR);
   const compiledJsFiles = globby(`${BUILD_DIR}/**/*.js`);
 
   return compiledJsFiles;
