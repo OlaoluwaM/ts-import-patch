@@ -1,4 +1,4 @@
-# esm-node-import-patch
+# ts-import-patch
 
 This is a simple module that add the `.js` extension to js imports without it.
 This is typically the case when using ES modules in node with typescript
