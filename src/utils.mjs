@@ -23,6 +23,10 @@ export function info(msg) {
   console.log(chalk.whiteBright.bold(msg));
 }
 
+export function error(msg) {
+  console.log(chalk.redBright.bold(msg));
+}
+
 export async function doesDistFolderExist() {
   try {
     const stat = await fsPromise.stat(`./${BUILD_DIR}`);
