@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
-import url from 'url';
-
 import { globby } from 'globby';
 import {
   info,
+  error,
   overwriteFile,
   grabFileContents,
   doesDistFolderExist,
@@ -14,7 +13,12 @@ import {
 // LOA
 // Lang Features --> generic helpers --> specific helpers --> specific business logic
 
-const BUILD_DIR = getBuildDirFromArgs();
+async function main() {
+  const IS_TEST_ENV = process.env.NODE_ENV === 'test';
+
+  if (IS_TEST_ENV) return;
+  await patchCompiledJSImports();
+}
 
 async function patchCompiledJSImports() {
   const jsFilePathArr = await grabAllCompiledJSFiles();
@@ -25,8 +29,16 @@ async function patchCompiledJSImports() {
 }
 
 async function grabAllCompiledJSFiles() {
+  const BUILD_DIR = getBuildDirFromArgs();
+  if (!BUILD_DIR) {
+    error('Please specify the target directory as the first argument');
+    process.exit(1);
+  }
+
   await doesDistFolderExist();
-  return globby(`${BUILD_DIR}/**/*.js`);
+  const compiledJsFiles = globby(`${BUILD_DIR}/**/*.js`);
+
+  return compiledJsFiles;
 }
 
 async function overwriteCompiledJsFiles(filePaths, updatedFileContents) {
@@ -81,11 +93,4 @@ function shouldPatch(importStatementStr) {
   return true;
 }
 
-if (import.meta.url === url.pathToFileURL(process.argv[1]).href) {
-  if (!BUILD_DIR) {
-    throw new Error(
-      'Please specify the target directory as the first argument'
-    );
-  }
-  await patchCompiledJSImports();
-}
+await main();
