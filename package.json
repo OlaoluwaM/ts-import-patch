@@ -1,5 +1,5 @@
 {
-  "name": "ts--import-patch",
+  "name": "ts-import-patch",
   "version": "1.0.0",
   "description": "A simple script that adds the '.js' extension to js imports compiled from ts while using ESM in node",
   "main": "./src/index.mjs",
