@@ -1,15 +1,18 @@
 {
-  "name": "esm-node-import-patch",
+  "name": "ts--import-patch",
   "version": "1.0.0",
-  "description": "A simple script that adds the '.js' extension to js imports compiled from ts in node",
-  "main": "index.js",
+  "description": "A simple script that adds the '.js' extension to js imports compiled from ts while using ESM in node",
+  "main": "./src/index.mjs",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "type": "module",
   "keywords": [],
   "author": "Olaoluwa Mustapha <jomeemustapha@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
+  "bin": {
+    "ts-import-patch": "./src/index.mjs"
+  },
   "devDependencies": {
     "jest": "^27.5.1"
   },
