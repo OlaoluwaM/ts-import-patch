@@ -3,22 +3,30 @@
   "version": "1.0.0",
   "description": "A simple script that adds the '.js' extension to js imports compiled from ts while using ESM in node",
   "main": "./src/index.mjs",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "type": "module",
-  "keywords": [],
+  "keywords": [
+    "Add .js to ts compiled source in node with esm",
+    "Add .js to compiled ts",
+    "ESM with ts",
+    "import patch",
+    "import fix",
+    "transpiled ts import fix"
+  ],
   "author": "Olaoluwa Mustapha <jomeemustapha@gmail.com>",
   "license": "MIT",
   "bin": {
-    "ts-import-patch": "./src/index.mjs"
+    "tsp": "./src/index.mjs"
   },
   "devDependencies": {
     "jest": "^27.5.1"
   },
   "dependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/globby": "^9.1.0",
     "chalk": "^5.0.1",
     "globby": "^13.1.1"
   }
