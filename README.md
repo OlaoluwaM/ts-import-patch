@@ -5,6 +5,12 @@ This is typically the case when using ES modules in node with typescript
 
 Works for Unix systems only. I have not tested on Windows since windows uses a different path delimiter
 
+## Installation
+
+```bash
+  npm i -D ts-import-patch
+```
+
 ## Usage
 
 ```bash
